@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<e:Skin class="GamePlayingSkin" width="640" height="1136" xmlns:e="http://ns.egret.com/eui" xmlns:w="http://ns.egret.com/wing" xmlns:ns1="*" >
+	<w:Config id="16fbe6d1fea" ></w:Config>
+	<e:Image id="bg" left="0" top="0" source="GameBG3_jpg" width="100%" height="100%"/>
+	<e:Button id="btn_back" label="" left="8" top="8">
+		<e:skinName>
+			<e:Skin states="up,down,disabled">
+			<e:Image width="100%" height="100%" source="BackBtn_png" source.down="BackBtn1_png"/>
+			<e:Label id="labelDisplay" horizontalCenter="0" verticalCenter="0"/>
+			</e:Skin>
+		</e:skinName>
+	</e:Button>
+	<e:Button id="btn_setting" label="设置" right="9" top="9">
+		<e:skinName>
+			<e:Skin states="up,down,disabled">
+			<e:Image width="100%" height="100%" source="MoneyBG_png"/>
+			<e:Label id="labelDisplay" horizontalCenter="0" verticalCenter="0"/>
+			</e:Skin>
+		</e:skinName>
+	</e:Button>
+	<e:Image id="img_question_bg" y="120.04" anchorOffsetX="0" anchorOffsetY="0" rotation="0.09" horizontalCenter="-2" source="WordFrame_png" fillMode="scale" width="570" height="720"/>
+	<e:Image id="img_question" width="370" height="240" y="174.98" anchorOffsetX="0" anchorOffsetY="0" horizontalCenter="0"/>
+	<e:Group id="selected_word_group" width="338.68" height="80" x="144.33" y="427" anchorOffsetX="0" anchorOffsetY="0">
+		<ns1:Word x="1" y="-5.92"/>
+		<ns1:Word x="11" y="4.08"/>
+		<ns1:Word x="21" y="14.08"/>
+		<ns1:Word x="31" y="24.08"/>
+		<e:layout>
+		<e:HorizontalLayout/>
+		</e:layout>
+	</e:Group>
+	<e:Group id="select_word_group" width="517.33" height="418.66" y="620.34" anchorOffsetX="0" anchorOffsetY="0" horizontalCenter="0">
+		<ns1:Word x="15" y="32"/>
+		<ns1:Word x="173" y="26"/>
+		<ns1:Word x="81" y="74.08"/>
+		<ns1:Word x="91" y="84.08"/>
+		<ns1:Word x="101" y="94.08"/>
+		<ns1:Word x="111" y="104.08"/>
+		<ns1:Word x="121" y="114.08"/>
+		<ns1:Word x="323" y="86"/>
+		<ns1:Word x="357" y="24"/>
+		<ns1:Word x="333" y="84"/>
+		<ns1:Word x="380" y="76"/>
+		<ns1:Word x="390" y="86"/>
+		<ns1:Word x="400" y="96"/>
+		<ns1:Word x="430" y="126"/>
+		<ns1:Word x="430" y="126"/>
+		<ns1:Word x="430" y="126"/>
+		<ns1:Word x="430" y="126"/>
+		<ns1:Word x="430" y="126"/>
+		<ns1:Word x="430" y="126"/>
+		<ns1:Word x="430" y="126"/>
+		<e:layout>
+			<e:TileLayout rowAlign="justifyUsingHeight" columnAlign="justifyUsingGap" horizontalGap="9"/>
+		</e:layout>
+	</e:Group>
+</e:Skin>

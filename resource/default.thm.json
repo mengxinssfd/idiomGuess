@@ -1,0 +1,18 @@
+{
+	"skins": {
+		"GameBegin": "resource/eui_skins/GameBegin.exml",
+		"GameLevels": "resource/eui_skins/GameLevels.exml",
+		"LevelIcon": "resource/eui_skins/LevelIcon.exml",
+		"GamePlaying": "resource/eui_skins/GamePlaying.exml",
+		"Word": "resource/eui_skins/Word.exml"
+	},
+	"autoGenerateExmlsList": true,
+	"exmls": [
+		"resource/eui_skins/GameBegin.exml",
+		"resource/eui_skins/GameLevels.exml",
+		"resource/eui_skins/GamePlaying.exml",
+		"resource/eui_skins/LevelIcon.exml",
+		"resource/eui_skins/Word.exml"
+	],
+	"path": "resource/default.thm.json"
+}

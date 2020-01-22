@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<e:Skin class="BtnLevelSkin" width="77" height="78" xmlns:e="http://ns.egret.com/eui" xmlns:w="http://ns.egret.com/wing"  states="up,down,disabled"  width.up="77" height.up="78">
+	<w:Config id="16fb92f6477" ></w:Config>
+	<e:Image id="bg" width="100%" height="100%" scale9Grid="1,3,8,8" 
+                
+                 source.up="gs_select_1_png" width.up="77" height.up="78" source="gs_select_1_png" left="0" top="0" source.disabled="gs_select_dis_png"/>
+        <e:Label
+ id="label_level"                 size="30"
+                 textColor="0xFFFFFF" verticalAlign="middle" textAlign="center" width.up="77" height.up="78" width="100%" height="100%" left="0" top="0" text="999" fontFamily="Arial"/>
+</e:Skin>
