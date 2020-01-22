@@ -19,10 +19,13 @@ var Word = (function (_super) {
     }
     Word.prototype.childrenCreated = function () {
         _super.prototype.childrenCreated.call(this);
-        this.label_word.addEventListener(egret.TouchEvent.TOUCH_TAP, this.onClick, this);
+        this.addEventListener(egret.TouchEvent.TOUCH_TAP, this.onClick, this);
     };
     Word.prototype.onClick = function () {
-        console.log(this.word);
+        // console.log(this.word);
+        var e = new WordClickEvent(WordClickEvent.EVENTNAME, true);
+        e.word = this.word;
+        this.dispatchEvent(e);
     };
     Object.defineProperty(Word.prototype, "word", {
         get: function () {

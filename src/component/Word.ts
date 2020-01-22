@@ -12,11 +12,14 @@ class Word extends eui.Component implements eui.UIComponent {
 
     protected childrenCreated(): void {
         super.childrenCreated();
-        this.label_word.addEventListener(egret.TouchEvent.TOUCH_TAP, this.onClick, this);
+        this.addEventListener(egret.TouchEvent.TOUCH_TAP, this.onClick, this);
     }
 
-    private onClick() {
-        console.log(this.word);
+    protected onClick() {
+        // console.log(this.word);
+        const e = new WordClickEvent(WordClickEvent.EVENTNAME, true);
+        e.word = this.word;
+        this.dispatchEvent(e);
     }
 
     public get word(): string {
