@@ -10,6 +10,7 @@ class LevelDataManager {
     public questions: Question[];
     private static instance: LevelDataManager;
     private currentLevel$: number;
+    private maxLevel$: number;//已完
 
     private constructor() {
         this.questions = RES.getRes("questions_json");
@@ -29,7 +30,7 @@ class LevelDataManager {
         return this.questions[index];
     }
 
-// 获取当前游戏的最远进度
+    // 获取当前游戏的最远进度
     public get currentLevel(): number {
         if (this.currentLevel$ !== undefined) return this.currentLevel$;
         let currentLevel: string = egret.localStorage.getItem("currentLevel");
@@ -40,7 +41,21 @@ class LevelDataManager {
     // 设置当前游戏的最远进度
     public set currentLevel(level: number) {
         this.currentLevel$ = level;
+        if (this.maxLevel < level) this.maxLevel = level;
         egret.localStorage.setItem("currentLevel", level.toString());
+    }
+
+    public get maxLevel(): number {
+        if (this.maxLevel$ !== undefined) return this.maxLevel$;
+        let maxLevel: string = egret.localStorage.getItem("maxLevel");
+        // 如果没有数据,那默认就是第一关
+        return parseInt(maxLevel || "1");
+    }
+
+    // 设置当前游戏的最远进度
+    public set maxLevel(level: number) {
+        this.maxLevel$ = level;
+        egret.localStorage.setItem("maxLevel", level.toString());
     }
 
     public get currentQuestion(): Question {

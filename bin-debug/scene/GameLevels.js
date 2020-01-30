@@ -8,12 +8,14 @@ var __extends = this && this.__extends || function __extends(t, e) {
 for (var i in e) e.hasOwnProperty(i) && (t[i] = e[i]);
 r.prototype = e.prototype, t.prototype = new r();
 };
+var spanY = 77;
 var GameLevels = (function (_super) {
     __extends(GameLevels, _super);
     function GameLevels() {
         var _this = _super.call(this) || this;
         _this.level = 0;
         _this.levelIconList = [];
+        _this.totalHeight = 0;
         return _this;
     }
     Object.defineProperty(GameLevels, "Instance", {
@@ -39,7 +41,7 @@ var GameLevels = (function (_super) {
         // 事件代理
         this.addEventListener(egret.TouchEvent.TOUCH_TAP, this.touchHandler, this);
         this.scroll.scrollPolicyH = eui.ScrollPolicy.OFF;
-        var spanY = 77;
+        // const spanY = 77;
         var half = this.width / 2;
         var quarter = half / 2;
         var gkLen = 400;
@@ -57,6 +59,7 @@ var GameLevels = (function (_super) {
             group.addChildAt(img, 0);
         }
         var currentLevel = LevelDataManager.Instance.currentLevel;
+        var maxLevel = LevelDataManager.Instance.maxLevel;
         for (var i = 0; i < gkLen; i++) {
             var btn = new LevelIcon();
             btn.level = i + 1;
@@ -64,7 +67,7 @@ var GameLevels = (function (_super) {
             btn.x = Math.sin(btn.y / (180 * 6) * Math.PI) * quarter + half - spanY / 2;
             // 从底部排起
             btn.y = group.height - btn.y - spanY;
-            btn.enabled = i < currentLevel;
+            btn.enabled = i < maxLevel;
             group.addChild(btn);
             this.levelIconList.push(btn);
         }
@@ -81,6 +84,7 @@ var GameLevels = (function (_super) {
         imgArrow.y = currentLevelBtn.y;
         this.img_arrow = imgArrow;
         group.addChild(imgArrow);
+        this.totalHeight = group.height;
         // 滚动到目的地
         this.group.scrollV = Math.min(currentLevelBtn.y - spanY, group.height - this.height);
     };
@@ -93,6 +97,18 @@ var GameLevels = (function (_super) {
         LevelDataManager.Instance.currentLevel = this.level;
         SceneManager.Instance.redirect(SceneManager.Instance.gamePlaying);
         GamePlaying.Instance.initLevel();
+    };
+    GameLevels.prototype.refresh = function () {
+        var currentLevel = LevelDataManager.Instance.currentLevel;
+        var maxLevel = LevelDataManager.Instance.maxLevel;
+        this.levelIconList.forEach(function (item, index) {
+            item.enabled = item.level <= maxLevel;
+        });
+        var currentLevelBtn = this.levelIconList[currentLevel - 1];
+        this.img_arrow.y = currentLevelBtn.y;
+        this.img_arrow.x = currentLevelBtn.x;
+        // 滚动到目的地
+        this.group.scrollV = Math.min(currentLevelBtn.y - spanY, this.totalHeight - this.height);
     };
     return GameLevels;
 }(Scene));

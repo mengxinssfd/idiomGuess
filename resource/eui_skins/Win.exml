@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<e:Skin class="WinSkin" width="640" height="1136" xmlns:e="http://ns.egret.com/eui" xmlns:w="http://ns.egret.com/wing" >
+	<w:Config id="16ff48d2baf" ></w:Config>
+	<e:Rect id="r_mask" width="100%" height="100%" left="0" top="0" fillColor="0xfffcfc" fillAlpha="0.5"/>
+	<e:Group anchorOffsetX="0" anchorOffsetY="0" horizontalCenter="0" verticalCenter="0">
+		<e:Image source="Result_png" scaleY="0.9" scaleX="0.9" horizontalCenter="0" verticalCenter="0"/>
+		<e:Label id="lb_idiom_desc" text="解释" anchorOffsetX="0" width="445" anchorOffsetY="0" height="63" textColor="0x020202" size="30" verticalCenter="-80" horizontalCenter="0"/>
+		<e:Label id="lb_idiom_from" text="出处" anchorOffsetX="0" width="440" anchorOffsetY="0" height="123" textColor="0x020202" size="28" horizontalCenter="0.5" verticalCenter="47"/>
+		<e:Button id="btn_next" label="" right="58" bottom="33">
+			<e:skinName>
+				<e:Skin states="up,down,disabled">
+				<e:Image width="100%" height="100%" source="ResultBtn_png" source.down="ResultBtn1_png"/>
+				<e:Label id="labelDisplay" horizontalCenter="0" verticalCenter="0"/>
+				</e:Skin>
+			</e:skinName>
+		</e:Button>
+	</e:Group>
+</e:Skin>

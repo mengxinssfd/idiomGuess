@@ -16,6 +16,12 @@ var SoundManager = (function () {
         // this.sound.right.load("resource/assets/sound/right.mp3");
         // this.sound.wrong.load("resource/assets/sound/wrong.mp3");
         // this.sound.word.load("resource/assets/sound/type_word.mp3");
+        var swc = { bgm: true, sound: true };
+        var bgm = egret.localStorage.getItem("switchBgm");
+        var sound = egret.localStorage.getItem("switchSound");
+        swc.bgm = bgm !== "off";
+        swc.sound = sound !== "off";
+        this.switch = swc;
     }
     Object.defineProperty(SoundManager, "Instance", {
         get: function () {
@@ -27,6 +33,10 @@ var SoundManager = (function () {
         configurable: true
     });
     SoundManager.prototype.playBgm = function () {
+        if (!this.switchSound)
+            return;
+        if (!this.switchBgm)
+            return;
         if (this.bgmChannel)
             return;
         this.bgmChannel = this.sound.bgm.play();
@@ -38,8 +48,63 @@ var SoundManager = (function () {
         this.bgmChannel = null;
     };
     SoundManager.prototype.playClick = function () {
+        if (!this.switchSound)
+            return;
         this.sound.click.play(0, 1);
     };
+    SoundManager.prototype.playWord = function () {
+        if (!this.switchSound)
+            return;
+        this.sound.word.play(0, 1);
+    };
+    SoundManager.prototype.playRight = function () {
+        if (!this.switchSound)
+            return;
+        this.sound.right.play(0, 1);
+    };
+    SoundManager.prototype.playWrong = function () {
+        if (!this.switchSound)
+            return;
+        this.sound.wrong.play(0, 1);
+    };
+    Object.defineProperty(SoundManager.prototype, "switchBgm", {
+        get: function () {
+            return this.switch.bgm;
+        },
+        set: function (status) {
+            this.switch.bgm = status;
+            egret.localStorage.setItem("switchBgm", status ? "on" : "off");
+            if (!status) {
+                this.stopBgm();
+            }
+            else {
+                if (this.switchSound) {
+                    this.playBgm();
+                }
+            }
+        },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(SoundManager.prototype, "switchSound", {
+        get: function () {
+            return this.switch.sound;
+        },
+        set: function (status) {
+            this.switch.sound = status;
+            egret.localStorage.setItem("switchSound", status ? "on" : "off");
+            if (!status) {
+                this.stopBgm();
+            }
+            else {
+                if (this.switchBgm) {
+                    this.playBgm();
+                }
+            }
+        },
+        enumerable: true,
+        configurable: true
+    });
     return SoundManager;
 }());
 __reflect(SoundManager.prototype, "SoundManager");

@@ -34,11 +34,12 @@ class SceneManager extends egret.DisplayObjectContainer {
     }
 
     // 回退
-    public historyBack() {
+    public historyBack(isRefresh = true) {
         this.removeChild(this.currentScene);
         const back = this.history.pop();
         this.currentScene = back;
         this.addChild(back);
+        if (isRefresh) back.refresh();
     }
 }
 

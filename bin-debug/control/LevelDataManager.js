@@ -39,7 +39,25 @@ var LevelDataManager = (function () {
         // 设置当前游戏的最远进度
         set: function (level) {
             this.currentLevel$ = level;
+            if (this.maxLevel < level)
+                this.maxLevel = level;
             egret.localStorage.setItem("currentLevel", level.toString());
+        },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(LevelDataManager.prototype, "maxLevel", {
+        get: function () {
+            if (this.maxLevel$ !== undefined)
+                return this.maxLevel$;
+            var maxLevel = egret.localStorage.getItem("maxLevel");
+            // 如果没有数据,那默认就是第一关
+            return parseInt(maxLevel || "1");
+        },
+        // 设置当前游戏的最远进度
+        set: function (level) {
+            this.maxLevel$ = level;
+            egret.localStorage.setItem("maxLevel", level.toString());
         },
         enumerable: true,
         configurable: true

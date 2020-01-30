@@ -17,8 +17,10 @@ var GameBegin = (function (_super) {
         _super.prototype.partAdded.call(this, partName, instance);
     };
     GameBegin.prototype.childrenCreated = function () {
+        var _this = this;
         _super.prototype.childrenCreated.call(this);
         this.btn_setting.addEventListener(egret.TouchEvent.TOUCH_TAP, function () {
+            GameSetting.Instance.show(_this);
         }, this);
         this.btn_begin.addEventListener(egret.TouchEvent.TOUCH_TAP, function () {
             SoundManager.Instance.playBgm();

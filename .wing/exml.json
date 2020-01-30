@@ -1,44 +1,59 @@
 {
-  "16fb7ebbf59": {
-    "path": "scene\\GameBegin.ts",
-    "class": "GameBegin",
-    "parentPath": "resource/eui_skins/GameBegin.exml",
-    "guideLinesEnabled": false,
-    "backgroundX": 0,
-    "backgroundY": 0,
-    "backgroundWidth": -1,
-    "backgroundHeight": -1,
-    "useBgImage": true,
-    "useBgColor": true,
-    "backgroundAlpha": 100
-  },
-  "global": {
-    "gridColor": 8421504,
-    "gridEnabled": false,
-    "gridSize": 20,
-    "globalAutoLayerMarkEnable": true
-  },
-  "16fb918df8d": {
-    "path": "scene\\GameLevels.ts",
-    "class": "GameLevels",
-    "parentPath": "resource/eui_skins/GameLevels.exml"
-  },
-  "16fb92f6477": {
-    "path": "component\\LevelIcon.ts",
-    "class": "BtnLevel",
-    "parentPath": "resource/eui_skins/ButtonSkin.exml"
-  },
-  "16fbe6d1fea": {
-    "guideLines": [
-      {
-        "type": "h",
-        "pos": -38.667
-      },
-      {
-        "type": "h",
-        "pos": -50.667
-      }
-    ],
-    "guideLinesEnabled": true
-  }
+    "16fb7ebbf59": {
+        "path": "scene\\GameBegin.ts",
+        "class": "GameBegin",
+        "parentPath": "resource/eui_skins/GameBegin.exml",
+        "guideLinesEnabled": false,
+        "backgroundX": 0,
+        "backgroundY": 0,
+        "backgroundWidth": -1,
+        "backgroundHeight": -1,
+        "useBgImage": true,
+        "useBgColor": true,
+        "backgroundAlpha": 100
+    },
+    "global": {
+        "gridColor": 8421504,
+        "gridEnabled": false,
+        "gridSize": 20,
+        "globalAutoLayerMarkEnable": true
+    },
+    "16fb918df8d": {
+        "path": "scene\\GameLevels.ts",
+        "class": "GameLevels",
+        "parentPath": "resource/eui_skins/GameLevels.exml"
+    },
+    "16fb92f6477": {
+        "path": "component\\LevelIcon.ts",
+        "class": "BtnLevel",
+        "parentPath": "resource/eui_skins/ButtonSkin.exml"
+    },
+    "16fbe6d1fea": {
+        "guideLines": [
+            {
+                "type": "h",
+                "pos": -38.667
+            },
+            {
+                "type": "h",
+                "pos": -50.667
+            }
+        ],
+        "guideLinesEnabled": true
+    },
+    "16ff48d2baf": {
+        "path": "scene\\Win.ts",
+        "class": "Win",
+        "parentPath": ""
+    },
+    "16ff5001cf7": {
+        "path": "scene\\Tips.ts",
+        "class": "Tips",
+        "parentPath": ""
+    },
+    "16ff52665e0": {
+        "path": "component\\GameSetting.ts",
+        "class": "GameSetting",
+        "parentPath": ""
+    }
 }

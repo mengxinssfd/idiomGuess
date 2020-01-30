@@ -17,6 +17,7 @@ class Word extends eui.Component implements eui.UIComponent {
 
     protected onClick() {
         // console.log(this.word);
+        SoundManager.Instance.playWord();
         const e = new WordClickEvent(WordClickEvent.EVENTNAME, true);
         e.word = this.word;
         this.dispatchEvent(e);

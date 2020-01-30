@@ -40,11 +40,14 @@ var SceneManager = (function (_super) {
         this.addChild(scene);
     };
     // 回退
-    SceneManager.prototype.historyBack = function () {
+    SceneManager.prototype.historyBack = function (isRefresh) {
+        if (isRefresh === void 0) { isRefresh = true; }
         this.removeChild(this.currentScene);
         var back = this.history.pop();
         this.currentScene = back;
         this.addChild(back);
+        if (isRefresh)
+            back.refresh();
     };
     return SceneManager;
 }(egret.DisplayObjectContainer));

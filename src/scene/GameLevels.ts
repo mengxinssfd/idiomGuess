@@ -1,3 +1,5 @@
+const spanY = 77;
+
 class GameLevels extends Scene implements eui.UIComponent {
     private btn_back: eui.Button;
     private scroll: eui.Scroller;
@@ -5,6 +7,7 @@ class GameLevels extends Scene implements eui.UIComponent {
     private level: number = 0;
     private levelIconList: LevelIcon[] = [];
     private img_arrow: eui.Image;
+    private totalHeight: number = 0;
     private static instance: GameLevels;
 
     private constructor() {
@@ -35,7 +38,7 @@ class GameLevels extends Scene implements eui.UIComponent {
         this.addEventListener(egret.TouchEvent.TOUCH_TAP, this.touchHandler, this);
         this.scroll.scrollPolicyH = eui.ScrollPolicy.OFF;
 
-        const spanY = 77;
+        // const spanY = 77;
         const half = this.width / 2;
         const quarter = half / 2;
 
@@ -56,6 +59,7 @@ class GameLevels extends Scene implements eui.UIComponent {
         }
 
         const currentLevel = LevelDataManager.Instance.currentLevel;
+        const maxLevel = LevelDataManager.Instance.maxLevel;
         for (let i = 0; i < gkLen; i++) {
             const btn = new LevelIcon();
             btn.level = i + 1;
@@ -63,7 +67,7 @@ class GameLevels extends Scene implements eui.UIComponent {
             btn.x = Math.sin(btn.y / (180 * 6) * Math.PI) * quarter + half - spanY / 2;
             // 从底部排起
             btn.y = group.height - btn.y - spanY;
-            btn.enabled = i < currentLevel;
+            btn.enabled = i < maxLevel;
             group.addChild(btn);
             this.levelIconList.push(btn);
         }
@@ -82,6 +86,7 @@ class GameLevels extends Scene implements eui.UIComponent {
         imgArrow.y = currentLevelBtn.y;
         this.img_arrow = imgArrow;
         group.addChild(imgArrow);
+        this.totalHeight = group.height;
         // 滚动到目的地
         this.group.scrollV = Math.min(currentLevelBtn.y - spanY, group.height - this.height);
     }
@@ -94,5 +99,18 @@ class GameLevels extends Scene implements eui.UIComponent {
         LevelDataManager.Instance.currentLevel = this.level;
         SceneManager.Instance.redirect(SceneManager.Instance.gamePlaying);
         GamePlaying.Instance.initLevel();
+    }
+
+    public refresh() {
+        const currentLevel = LevelDataManager.Instance.currentLevel;
+        const maxLevel = LevelDataManager.Instance.maxLevel;
+        this.levelIconList.forEach((item, index) => {
+            item.enabled = item.level <= maxLevel;
+        });
+        let currentLevelBtn = this.levelIconList[currentLevel - 1];
+        this.img_arrow.y = currentLevelBtn.y;
+        this.img_arrow.x = currentLevelBtn.x;
+        // 滚动到目的地
+        this.group.scrollV = Math.min(currentLevelBtn.y - spanY, this.totalHeight - this.height);
     }
 }

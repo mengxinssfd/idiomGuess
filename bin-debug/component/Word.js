@@ -23,6 +23,7 @@ var Word = (function (_super) {
     };
     Word.prototype.onClick = function () {
         // console.log(this.word);
+        SoundManager.Instance.playWord();
         var e = new WordClickEvent(WordClickEvent.EVENTNAME, true);
         e.word = this.word;
         this.dispatchEvent(e);

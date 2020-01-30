@@ -18,6 +18,8 @@ var Scene = (function (_super) {
     Scene.prototype.clickHandler = function () {
         SoundManager.Instance.playClick();
     };
+    Scene.prototype.refresh = function () {
+    };
     return Scene;
 }(eui.Component));
 __reflect(Scene.prototype, "Scene");

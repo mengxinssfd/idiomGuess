@@ -12,20 +12,24 @@
 	],
 	"game": [
 		"bin-debug/scene/Scene.js",
+		"bin-debug/component/DialogSup.js",
 		"bin-debug/component/Word.js",
-		"bin-debug/Main.js",
 		"bin-debug/Platform.js",
 		"bin-debug/ThemeAdapter.js",
 		"bin-debug/component/AnswerWord.js",
-		"bin-debug/component/LevelIcon.js",
 		"bin-debug/AssetAdapter.js",
+		"bin-debug/component/GameSetting.js",
+		"bin-debug/component/LevelIcon.js",
+		"bin-debug/component/Tips.js",
 		"bin-debug/LoadingUI.js",
+		"bin-debug/Main.js",
+		"bin-debug/control/LevelDataManager.js",
 		"bin-debug/control/SceneManager.js",
 		"bin-debug/control/SoundManager.js",
 		"bin-debug/control/WordClickEvent.js",
 		"bin-debug/scene/GameBegin.js",
 		"bin-debug/scene/GameLevels.js",
 		"bin-debug/scene/GamePlaying.js",
-		"bin-debug/control/LevelDataManager.js"
+		"bin-debug/component/Win.js"
 	]
 }

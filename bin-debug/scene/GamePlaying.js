@@ -62,13 +62,22 @@ var GamePlaying = (function (_super) {
         this.init();
     };
     GamePlaying.prototype.init = function () {
+        var _this = this;
+        this.btn_setting.addEventListener(egret.TouchEvent.TOUCH_TAP, function () {
+            GameSetting.Instance.show(_this);
+        }, this);
         this.btn_back.addEventListener(egret.TouchEvent.TOUCH_TAP, function () {
             SceneManager.Instance.historyBack();
         }, this);
         this.select_word_group.addEventListener(WordClickEvent.EVENTNAME, this.clickSelectWord, this);
         this.selected_word_group.addEventListener(WordClickEvent.EVENTNAME, this.clickSelectedWord, this);
+        this.img_question.addEventListener(egret.TouchEvent.TOUCH_TAP, function () {
+            Tips.Instance.show(_this, _this.question.tip);
+        }, this);
     };
     GamePlaying.prototype.initLevel = function () {
+        var currentLevel = LevelDataManager.Instance.currentLevel;
+        this.lb_level.text = "\u7B2C" + currentLevel + "\u5173";
         var question = this.question = LevelDataManager.Instance.currentQuestion;
         var imgName = question.img.replace("images/", "");
         this.img_question.source = "resource/assets/images/question/" + imgName;
@@ -91,6 +100,7 @@ var GamePlaying = (function (_super) {
         var selectWords = this.select_word_group.$children;
         selectWords.forEach(function (word, index) {
             word.word = wordsList[index];
+            word.enabled = true;
         });
     };
     GamePlaying.prototype.shuffle = function (arr) {
@@ -124,18 +134,39 @@ var GamePlaying = (function (_super) {
                     case 2:
                         answer = selectedWords.map(function (word) { return word.word; }).join("");
                         console.log(answer);
-                        if (answer === LevelDataManager.Instance.currentQuestion.answer) {
-                            console.log("答对了");
+                        if (answer.length === 4) {
+                            if (answer === LevelDataManager.Instance.currentQuestion.answer) {
+                                console.log("答对了");
+                                this.onRight();
+                            }
+                            else {
+                                SoundManager.Instance.playWrong();
+                            }
                         }
                         return [2 /*return*/];
                 }
             });
         });
     };
+    GamePlaying.prototype.onRight = function () {
+        SoundManager.Instance.playRight();
+        Win.Instance.show(this);
+    };
     GamePlaying.prototype.clickSelectedWord = function (e) {
         var target = e.target;
         target.clickFrom.visible = true;
         target.word = "";
+    };
+    GamePlaying.prototype.refresh = function () {
+        // 选中的字重新显示
+        var selectedWords = this.selected_word_group.$children;
+        selectedWords.forEach(function (item) {
+            if (!item.clickFrom)
+                return;
+            item.clickFrom.visible = true;
+            item.clickFrom = null;
+        });
+        this.initLevel();
     };
     return GamePlaying;
 }(Scene));

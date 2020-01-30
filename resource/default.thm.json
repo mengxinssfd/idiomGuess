@@ -4,14 +4,20 @@
 		"GameLevels": "resource/eui_skins/GameLevels.exml",
 		"LevelIcon": "resource/eui_skins/LevelIcon.exml",
 		"GamePlaying": "resource/eui_skins/GamePlaying.exml",
-		"Word": "resource/eui_skins/Word.exml"
+		"Word": "resource/eui_skins/Word.exml",
+		"Win": "resource/eui_skins/Win.exml",
+		"Tips": "resource/eui_skins/Tips.exml",
+		"GameSetting": "resource/eui_skins/GameSetting.exml"
 	},
 	"autoGenerateExmlsList": true,
 	"exmls": [
 		"resource/eui_skins/GameBegin.exml",
 		"resource/eui_skins/GameLevels.exml",
 		"resource/eui_skins/GamePlaying.exml",
+		"resource/eui_skins/GameSetting.exml",
 		"resource/eui_skins/LevelIcon.exml",
+		"resource/eui_skins/Tips.exml",
+		"resource/eui_skins/Win.exml",
 		"resource/eui_skins/Word.exml"
 	],
 	"path": "resource/default.thm.json"
